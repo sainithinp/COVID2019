@@ -1,0 +1,39 @@
+<%@page import="java.sql.*"%>
+<%@page import="java.io.*"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+</head>
+<body>
+ <%
+    String Firstname=request.getParameter ("fname");
+    String lastname=request.getParameter ("lname");
+    String gender=request.getParameter ("sex");
+    String age=request.getParameter ("num");
+    String country=request.getParameter ("country");
+    String state=request.getParameter ("state");
+    String district=request.getParameter ("district");
+    String patientnumber=request.getParameter ("patientnumber");
+    String hname=request.getParameter ("hname");
+    String supervisor=request.getParameter ("supervisor");
+    String hphonenumber=request.getParameter ("hphonenumber");
+    
+    
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/COVID","root","");
+    Statement st=con.createStatement();
+    int i=st.executeUpdate("insert into report values('"+Firstname+"','"+lastname+"','"+gender+"','"+age+"','"+country+"','"+state+"','"+district+"','"+patientnumber+"','"+hname+"','"+supervisor+"','"+hphonenumber+"')");
+    if(i>0){
+    	
+   %>
+   <h1>Registered Succesfully</h1>
+   <%
+
+   }
+ %>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<%@page import="java.sql.*"%>
+<%@page import="java.io.*"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Insert title here</title>
+</head>
+<body>
+ <%
+    String state=request.getParameter ("state");
+    String countrya=request.getParameter ("countrya");
+    String district=request.getParameter ("district");
+    String indtype=request.getParameter ("indtype");
+    String name=request.getParameter ("name");
+    String contactno=request.getParameter ("contactno");
+    String email=request.getParameter ("email");
+    String emer=request.getParameter ("emer");
+    String aadhar=request.getParameter ("aadhar");
+    String gender=request.getParameter ("gender");
+    String needforpass=request.getParameter ("needforpass");
+    String purpose=request.getParameter ("purpose");
+    String reqfor=request.getParameter ("reqfor");
+    String kyctype=request.getParameter ("kyctype");
+    String photo=request.getParameter ("photo");
+    String kycfile=request.getParameter ("kycfile");
+    String vehtype=request.getParameter ("vehtype");
+    String vehno=request.getParameter ("vehno");
+    String flatno=request.getParameter ("flatno");
+    String area=request.getParameter ("area");
+    String town=request.getParameter ("town");
+    String state1=request.getParameter ("state1");
+    String pin=request.getParameter ("pin");
+    String coun=request.getParameter ("coun");
+    String add=request.getParameter ("add");
+    String despin=request.getParameter ("despin");
+    String route=request.getParameter ("route");
+    String fromdate=request.getParameter ("fromdate");
+    String todate=request.getParameter ("todate");
+    String pass=request.getParameter ("pass");
+    
+    
+    
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/COVID","root","");
+    Statement st=con.createStatement();
+    int i=st.executeUpdate("insert into epass values('"+state+"','"+countrya+"','"+district+"','"+indtype+"','"+name+"','"+contactno+"','"+email+"','"+emer+"','"+aadhar+"','"+gender+"','"+needforpass+"','"+purpose+"','"+reqfor+"','"+kyctype+"','"+photo+"','"+kycfile+"','"+vehtype+"','"+vehno+"','"+flatno+"','"+area+"','"+town+"','"+state1+"','"+pin+"','"+coun+"','"+add+"','"+despin+"','"+route+"','"+fromdate+"','"+todate+"','"+pass+"')");
+    if(i>0){
+    	
+   %>
+   <h1>Registered Succesfully</h1>
+   <%
+
+   }
+ %>
+</body>
+</html>
